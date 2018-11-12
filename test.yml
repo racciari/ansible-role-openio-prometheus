@@ -3,9 +3,11 @@
 - hosts: all
   become: true
   pre_tasks:
-    - name: Set NS fact
+    - name: Set NS fact and prometheus netdata hosts
       set_fact:
         namespace: OPENIO
+        prometheus_monitored_hosts: [ 'node1' ]
+        prometheus_admin_host: 'node1'
     - name: Seed directory for NS
       file:
         path: /etc/oio/sds/OPENIO
